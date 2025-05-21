@@ -243,7 +243,7 @@ import { token } from '@atlaskit/tokens';
 
 
 
-const IconButtonSmallExample = () => {
+const IconButtonIconOverridesExample = () => {
 
 	return (
 
@@ -254,8 +254,6 @@ const IconButtonSmallExample = () => {
 				<StarStarredIcon
 
 					{...iconProps}
-
-					size="small"
 
 					primaryColor={token('color.icon.accent.orange')}
 
@@ -273,7 +271,7 @@ const IconButtonSmallExample = () => {
 
 
 
-export default IconButtonSmallExample;
+export default IconButtonIconOverridesExample;
 ```
 
 ## States

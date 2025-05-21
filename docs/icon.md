@@ -6,7 +6,7 @@ An icon is a symbol representing a command, device, directory, or common action.
 
 ## Default (16px)
 
-All core icons are 16px. 
+Icons default to a medium size of 16px. 
 
 ```jsx
 import React from 'react';
@@ -21,7 +21,7 @@ import OfficeBuildingIcon from '@atlaskit/icon/core/office-building';
 
 import StopwatchIcon from '@atlaskit/icon/core/stopwatch';
 
-import { Box, Inline } from '@atlaskit/primitives';
+import { Inline } from '@atlaskit/primitives';
 
 
 
@@ -31,29 +31,13 @@ const IconDefaultNewExample = () => {
 
 		<Inline space="space.100">
 
-			<Box>
+			<ImageIcon label="" />
 
-				<ImageIcon label="" />
+			<AttachmentIcon label="" />
 
-			</Box>
+			<OfficeBuildingIcon label="" />
 
-			<Box>
-
-				<AttachmentIcon label="" />
-
-			</Box>
-
-			<Box>
-
-				<OfficeBuildingIcon label="" />
-
-			</Box>
-
-			<Box>
-
-				<StopwatchIcon label="" />
-
-			</Box>
+			<StopwatchIcon label="" />
 
 		</Inline>
 
@@ -66,7 +50,57 @@ const IconDefaultNewExample = () => {
 export default IconDefaultNewExample;
 ```
 
+## Small (12px)
+
+## New
+
+Small icons are 12px, for use next to small size text, such as in bylines, and inside small components such as lozenges. 
+
+```jsx
+import React from 'react';
+
+
+
+import ArrowRightIcon from '@atlaskit/icon/core/arrow-right';
+
+import ChevronIcon from '@atlaskit/icon/core/chevron-down';
+
+import DragHandleVerticalIcon from '@atlaskit/icon/core/drag-handle-vertical';
+
+import ErrorIcon from '@atlaskit/icon/core/error';
+
+import { Inline } from '@atlaskit/primitives';
+
+
+
+const IconSmallNewExample = () => {
+
+	return (
+
+		<Inline space="space.100">
+
+			<ChevronIcon label="" size="small" />
+
+			<ArrowRightIcon label="" size="small" />
+
+			<ErrorIcon label="" size="small" />
+
+			<DragHandleVerticalIcon label="" size="small" />
+
+		</Inline>
+
+	);
+
+};
+
+
+
+export default IconSmallNewExample;
+```
+
 ## Utility (12px)
+
+## Soon to be deprecated
 
 Utility icons are 12px for special cases and component parts that require a smaller size. Some glyphs aren't legible at this size, so only certain icons are offered at 12px. 
 
@@ -83,7 +117,7 @@ import DragHandleVerticalIcon from '@atlaskit/icon/utility/drag-handle-vertical'
 
 import ErrorIcon from '@atlaskit/icon/utility/error';
 
-import { Box, Inline } from '@atlaskit/primitives';
+import { Inline } from '@atlaskit/primitives';
 
 
 
@@ -93,29 +127,13 @@ const IconUtilityExample = () => {
 
 		<Inline space="space.100">
 
-			<Box>
+			<ChevronIcon label="" />
 
-				<ChevronIcon label="" />
+			<ArrowRightIcon label="" />
 
-			</Box>
+			<ErrorIcon label="" />
 
-			<Box>
-
-				<ArrowRightIcon label="" />
-
-			</Box>
-
-			<Box>
-
-				<ErrorIcon label="" />
-
-			</Box>
-
-			<Box>
-
-				<DragHandleVerticalIcon label="" />
-
-			</Box>
+			<DragHandleVerticalIcon label="" />
 
 		</Inline>
 
@@ -302,7 +320,7 @@ export default IconColorExample;
 
 ## Spacing props
 
-Icons support a spacing prop to add padding around the icon. spacious spacing sets the bounding box to 24px; utility icons support an additional option, compact, that sets the bounding box to 16px. 
+Icons support a spacing prop to add padding around the icon. spacious spacing sets the bounding box to 24px. Both small and utility icons support an additional option, compact, that sets the bounding box to 16px. 
 
 ```jsx
 import React from 'react';
@@ -313,19 +331,23 @@ import Heading from '@atlaskit/heading';
 
 import AddIcon from '@atlaskit/icon/core/add';
 
-import ChevronIcon from '@atlaskit/icon/utility/chevron-down';
+import ChevronIcon from '@atlaskit/icon/core/chevron-down';
+
+import ChevronIconUtility from '@atlaskit/icon/utility/chevron-down';
+
+import Lozenge from '@atlaskit/lozenge';
 
 import { Box, Inline, Stack, xcss } from '@atlaskit/primitives';
 
 
 
-const IconUtilityExample = () => {
+const IconSpacingExample = () => {
 
 	return (
 
 		<Stack space="space.100">
 
-			<Heading size="small">Core Icon:</Heading>
+			<Heading size="small">Core icons (medium):</Heading>
 
 			<Inline space="space.100">
 
@@ -343,25 +365,59 @@ const IconUtilityExample = () => {
 
 			</Inline>
 
-			<Heading size="small">Utility icon:</Heading>
+			<Heading size="small">Core icons (small):</Heading>
 
 			<Inline space="space.100">
 
 				<IconContainer>
 
-					<ChevronIcon label="" />
+					<ChevronIcon label="" size="small" />
 
 				</IconContainer>
 
 				<IconContainer>
 
-					<ChevronIcon label="" spacing="compact" />
+					<ChevronIcon label="" size="small" spacing="compact" />
 
 				</IconContainer>
 
 				<IconContainer>
 
-					<ChevronIcon label="" spacing="spacious" />
+					<ChevronIcon label="" size="small" spacing="spacious" />
+
+				</IconContainer>
+
+			</Inline>
+
+			<Heading size="small">
+
+				Utility icons:{' '}
+
+				<Lozenge appearance="moved" isBold>
+
+					Soon to be deprecated
+
+				</Lozenge>
+
+			</Heading>
+
+			<Inline space="space.100">
+
+				<IconContainer>
+
+					<ChevronIconUtility label="" />
+
+				</IconContainer>
+
+				<IconContainer>
+
+					<ChevronIconUtility label="" spacing="compact" />
+
+				</IconContainer>
+
+				<IconContainer>
+
+					<ChevronIconUtility label="" spacing="spacious" />
 
 				</IconContainer>
 
@@ -397,7 +453,7 @@ const IconContainer = ({ children }: { children: React.ReactChild }) => (
 
 
 
-export default IconUtilityExample;
+export default IconSpacingExample;
 ```
 
 ## Migration

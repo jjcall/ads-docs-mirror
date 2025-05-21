@@ -716,21 +716,7 @@ const ResponsivePrimaryDropdownButton = (props: PrimaryDropdownButtonProps) => {
 
 	) : (
 
-		<ButtonItem
-
-			iconAfter={
-
-				// eslint-disable-next-line @atlaskit/ui-styling-standard/enforce-style-prop -- Ignored via go/DSP-18766
-
-				<span style={{ opacity: 0.51 }}>
-
-					<ChevronDownIcon label="" />
-
-				</span>
-
-			}
-
-		>
+		<ButtonItem iconAfter={<ChevronDownIcon label="" />}>
 
 			{props.children}
 

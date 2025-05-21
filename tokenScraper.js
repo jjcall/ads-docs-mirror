@@ -20,10 +20,28 @@ async function scrapeTokensPage(url, filename, options = {}) {
   // Define output paths
   const outputDir = path.join(__dirname, 'docs');
   const outputPath = path.join(outputDir, filename);
+
+  // For backward compatibility, check if filename is still using the old naming scheme
+  if (filename === 'designTokens.md') {
+    // Use the new naming convention
+    if (url.includes('tokens/all-tokens')) {
+      const newFilename = 'tokens_all-tokens.md';
+      console.log(`Updating filename from ${filename} to ${newFilename} to match new naming convention`);
+      filename = newFilename;
+    } else if (url.includes('design-tokens')) {
+      const newFilename = 'design-tokens.md';
+      console.log(`Updating filename from ${filename} to ${newFilename} to match new naming convention`);
+      filename = newFilename;
+    }
+  }
+
+  // Update outputPath with potentially new filename
+  const updatedOutputPath = path.join(outputDir, filename);
+
   const htmlFilePath = path.join(outputDir, 'tokens-page.html');
 
   // Skip if file exists and we're not rewriting
-  if (!scrapeOptions.rewriteExisting && await fs.pathExists(outputPath)) {
+  if (!scrapeOptions.rewriteExisting && await fs.pathExists(updatedOutputPath)) {
     console.log(`Skipping: ${filename} (file already exists)`);
     return;
   }
@@ -553,11 +571,11 @@ async function scrapeTokensPage(url, filename, options = {}) {
   await fs.ensureDir(outputDir);
 
   // Write the markdown file
-  await fs.writeFile(outputPath, markdown);
+  await fs.writeFile(updatedOutputPath, markdown);
 
-  console.log(`Token data saved to: ${outputPath}`);
+  console.log(`Token data saved to: ${updatedOutputPath}`);
 
-  return outputPath;
+  return updatedOutputPath;
 }
 
 module.exports = {

@@ -569,25 +569,47 @@ Examples:
 // Function to extract a filename from a URL - add this after the help section
 function getFilenameFromUrl(url) {
   const urlObj = new URL(url);
-  const pathParts = urlObj.pathname.split('/');
+  let pathParts = urlObj.pathname.split('/');
 
-  // Special case for tokens
-  if (url.includes('tokens/all-tokens') || url.includes('design-tokens')) {
-    return 'designTokens.md';
+  // Strip off the '/components/' prefix
+  const componentsIndex = pathParts.indexOf('components');
+  if (componentsIndex !== -1) {
+    pathParts = pathParts.slice(componentsIndex + 1);
   }
 
-  // Remove 'examples' from the end if present
-  if (pathParts[pathParts.length - 1] === 'examples') {
+  // Remove trailing '/examples', '/usage', or '/changelog' segments
+  const trailingSegments = ['examples', 'usage', 'changelog'];
+  if (pathParts.length > 0 && trailingSegments.includes(pathParts[pathParts.length - 1])) {
     pathParts.pop();
   }
 
-  // Get the last meaningful part of the path (component name)
-  const componentName = pathParts[pathParts.length - 1];
+  // Special case for tokens page
+  if (pathParts.includes('tokens') && pathParts.includes('all-tokens')) {
+    return 'tokens_all-tokens.md';
+  }
 
-  // Convert kebab-case to camelCase
-  const camelCaseName = componentName.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase());
+  // Special case for design tokens page
+  if (pathParts.includes('design-tokens')) {
+    return 'design-tokens.md';
+  }
 
-  return camelCaseName + '.md';
+  // Convert remaining path segments to the new format
+  // - Join with underscores
+  // - Convert nested paths to hyphens (e.g., responsive/show → responsive-show)
+  const filename = pathParts
+    .map(segment => segment.toLowerCase())  // Ensure consistency
+    .map((segment, index, array) => {
+      // If this is not the first segment and we have deeper nesting,
+      // convert inner slashes to hyphens
+      if (index > 0) {
+        // Convert any slashes within segments to hyphens
+        return segment.replace(/\/+/g, '-');
+      }
+      return segment;
+    })
+    .join('_') + '.md';
+
+  return filename;
 }
 
 async function scrapePage(url, filename, options = {}) {
@@ -1234,3 +1256,8 @@ async function scrapePage(url, filename, options = {}) {
     }
   }
 })();
+
+// Module exports
+module.exports = {
+  getFilenameFromUrl
+};

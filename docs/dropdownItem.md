@@ -297,6 +297,8 @@ const CustomComponentLink = forwardRef<HTMLAnchorElement, React.PropsWithChildre
 
 	({ children, ...props }, ref) => (
 
+		// eslint-disable-next-line @atlaskit/design-system/no-html-anchor
+
 		<a {...props} ref={ref}>
 
 			{children}

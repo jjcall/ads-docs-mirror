@@ -251,7 +251,7 @@ const BlanketWithChildrenExample = () => {
 
 			>
 
-				<Box xcss={blanketChildStyles}>
+				<Box xcss={blanketChildStyles.root}>
 
 					Click "Show blanket" button to open the blanket & click the blanket to dismiss it.
 

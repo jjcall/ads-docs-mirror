@@ -795,11 +795,11 @@ import AppsIcon from '@atlaskit/icon/core/apps';
 
 import InboxIcon from '@atlaskit/icon/glyph/tray';
 
+import LinkExternalIcon from '@atlaskit/icon/glyph/shortcut';
+
 import ShowMoreHorizontalIcon from '@atlaskit/icon/glyph/more';
 
 import AppSwitcherIcon from '@atlaskit/icon/glyph/app-switcher';
-
-import LinkExternalIcon from '@atlaskit/icon/glyph/shortcut';
 
 import { ConfluenceIcon, JiraIcon } from '@atlaskit/logo';
 
@@ -869,7 +869,11 @@ export const GlobalAppsExample = () => (
 
 					elemBefore={<GlobalAppIconTile logo={JiraIcon} />}
 
-					elemAfter={<LinkExternalIcon label="" size="small" />}
+					elemAfter={
+
+						<LinkExternalIcon label="" size="small" />
+
+					}
 
 					description="My site"
 
@@ -897,7 +901,11 @@ export const GlobalAppsExample = () => (
 
 								elemBefore={<GlobalAppIconTile logo={ConfluenceIcon} />}
 
-								elemAfter={<LinkExternalIcon label="" size="small" />}
+								elemAfter={
+
+									<LinkExternalIcon label="" size="small" />
+
+								}
 
 								description="Site A"
 
@@ -913,7 +921,11 @@ export const GlobalAppsExample = () => (
 
 								elemBefore={<GlobalAppIconTile logo={ConfluenceIcon} />}
 
-								elemAfter={<LinkExternalIcon label="" size="small" />}
+								elemAfter={
+
+									<LinkExternalIcon label="" size="small" />
+
+								}
 
 								description="Site B"
 
@@ -929,7 +941,11 @@ export const GlobalAppsExample = () => (
 
 								elemBefore={<GlobalAppIconTile logo={ConfluenceIcon} />}
 
-								elemAfter={<LinkExternalIcon label="" size="small" />}
+								elemAfter={
+
+									<LinkExternalIcon label="" size="small" />
+
+								}
 
 								description="Site C"
 
