@@ -31,6 +31,18 @@ The goal is to create a high-fidelity, up-to-date mirror of the ADS token docume
 3. **Result:**
    - The Markdown files will contain all component code examples, values, and descriptions, organized to mirror the ADS UI.
 
+## Generating the LLM Manifest for Context7
+
+To generate a manifest file (`llms.txt`) containing raw GitHub URLs for all markdown docs (for Context7 or similar tools):
+
+1. **Ensure your docs are up to date (run the scraper first).**
+2. **Run the manifest generator:**
+   ```sh
+   node generateLLMManifest.js
+   ```
+   - This will create or update `llms.txt` in the project root, listing all markdown files in `docs/` as raw GitHub URLs (edit the script to match your repo if needed).
+   - This step is **separate** from running the scraper.
+
 ## Notes
 - The script prefers a local HTML snapshot for speed and reliability. To update, delete `docs/tokens-page.html` and rerun.
 - Designed for easy integration with Context7 and similar AI documentation/indexing tools.
