@@ -552,16 +552,16 @@ if (commandLineOptions.help) {
 Atlassian Design System Scraper
 
 Usage:
-  node scrape.js [options] [url]
+  node adsScrape.js [options] [url]
 
 Options:
   -r, --rewrite-all   Rewrite all documentation files, even if they already exist
   -h, --help          Show this help message
 
 Examples:
-  node scrape.js                                                 # Scrape all predefined URLs
-  node scrape.js -r                                              # Scrape all URLs and rewrite existing files
-  node scrape.js https://atlassian.design/components/radio/examples  # Scrape only this specific URL
+  node adsScrape.js                                                 # Scrape all predefined URLs
+  node adsScrape.js -r                                              # Scrape all URLs and rewrite existing files
+  node adsScrape.js https://atlassian.design/components/radio/examples  # Scrape only this specific URL
   `);
   process.exit(0);
 }
